@@ -8,14 +8,13 @@ export default function App() {
   const [previsao, setPrevisao] = useState()
 
   useEffect(() => {
-    buscaPrevisao('pirulito')
+    buscaPrevisao()
   }, [])
 
 
   function buscaPrevisao() {
     axios.get('https://api.open-meteo.com/v1/forecast?latitude=24.3&longitude=52&current_weather=true&hourly=temperature_2m')
       .then(function (res) {
-        console.log(res.data)
         setPrevisao(res.data)
       })
       .catch(function (error) {
